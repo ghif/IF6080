@@ -3,7 +3,7 @@ Repositori ini berisi materi implementasi kode yang digunakan sebagai bahan ajar
 
 ## Materi
 1. Matematika pada pembelajaran mesin dengan Python
-    - Matriks dan vektor
+    - Vektor dan matriks
     - Operasi aljabar linear
     - Fungsi dan distribusi probabilitas
     - Sampling acak
@@ -32,3 +32,8 @@ Repositori ini berisi materi implementasi kode yang digunakan sebagai bahan ajar
     - Strategi membangun model Deep Learning dengan performa tinggi
     - Use case #3: penerapan convolutional networks pada klasifikasi objek
     - Use case #4: transfer learning
+
+## Kebutuhan Pendukung
+
+- NumPy
+- PyTorch
