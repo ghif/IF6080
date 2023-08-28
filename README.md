@@ -9,7 +9,7 @@ Repositori ini berisi materi implementasi kode yang digunakan sebagai bahan ajar
     - Sampling acak
 
 2. Implementasi dasar supervised learning
-    - Pengelohan data tabular
+    - Pengolahan data tabular
     - Training dan regularisasi
     - Regresi dan klasifikasi linear
     - Evaluasi performa model
