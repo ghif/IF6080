@@ -2,9 +2,7 @@
 
 *Supervised learning* (SL) merupakan paradigma *machine learning* yang hingga saat ini masih menjadi yang dominan dalam penyelesaian berbagai hal. 
 SL bertujuan untuk mempelajari sebuah fungsi parametrik (hipotesis)
-$$
-f_\theta : \mathcal{X} \rightarrow \mathcal{Y}
-$$
+$$f_\theta : \mathcal{X} \rightarrow \mathcal{Y}$$
 dimana $\mathcal{X}$ merupakan ruang input dan $\mathcal{Y}$ merupakan ruang output.
 
 Terdapat berbagai macam algoritma SL untuk mencari bentuk optimal dari $f_\theta$ yang belajar dari suatu himpunan data: $D = (x^{(i)}, y^{(i)})_{i=1}^n$$.
