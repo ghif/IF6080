@@ -7,11 +7,11 @@ f_\theta : \mathcal{X} \rightarrow \mathcal{Y}
 $$
 dimana $\mathcal{X}$ merupakan ruang input dan $\mathcal{Y}$ merupakan ruang output.
 
-Terdapat berbagai macam algoritma SL untuk mencari bentuk optimal dari $f_\theta$ yang belajar dari suatu himpunan data: $D = \{x^{(i)}, y^{(i)}\}_{i=1}^n$.
+Terdapat berbagai macam algoritma SL untuk mencari bentuk optimal dari $f_\theta$ yang belajar dari suatu himpunan data: $$D = \{x^{(i)}, y^{(i)}\}_{i=1}^n$$.
 
 Dari karakteristik ruang output $\mathcal{Y}$, SL terbagi menjadi 2 tipe problem:
-1. Regresi ($\mathcal{Y} \subseteq \mathbb{R}$): output berupa bilangan riil
-2. Klasifikasi ($\mathcal{X} \subseteq \mathbb{Z}$): output berupa bilangan bulat/diskrit
+- Regresi ($\mathcal{Y} \subseteq \mathbb{R}$): output berupa bilangan riil
+- Klasifikasi ($\mathcal{X} \subseteq \mathbb{Z}$): output berupa bilangan bulat/diskrit
 
 Beberapa topik yang dibahas pada bagian ini antara lain:
 
