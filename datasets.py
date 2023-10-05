@@ -1,3 +1,73 @@
+import os
+# import gzip
+import numpy as np
+import pandas as pd
+
+def load_breast_cancer(datapath=None):
+    """
+    Args:
+    Returns:
+        X (np.array): n x d 
+        y (np.array): d
+        df (pd.DataFrame):
+    """
+    if datapath is None:
+        DATADIR = os.path.join(os.path.abspath(os.path.join(os.getcwd(), os.pardir)), 'data')
+        datapath = os.path.join(DATADIR, 'breast-cancer.csv')
+    
+    df = pd.read_csv(datapath)
+
+    # Get input features and labels
+    
+    X = np.array(df.iloc[:, 2:].values) # features 
+
+    y = np.array(df.iloc[:, 1].values)
+    idx, = np.where(y == 'M')
+    y[idx] = 1
+
+    idx, = np.where(y == 'B')
+    y[idx] = 0
+
+    y = y.astype(np.uint)
+
+    return df, X, y
+
+
+def load_mnist_data(data_dir=None):
+    if data_dir is None:
+        data_dir = "/Users/mghifary/Work/Code/AI/data/fashion_mnist"
+
+    files = [
+        "train-labels.idx1-ubyte",
+        "train-images.idx3-ubyte",
+        "t10k-labels.idx1-ubyte",
+        "t10k-images.idx3-ubyte",
+    ]
+
+    # training label
+    path = os.path.join(data_dir, files[0])
+    with open(path, "rb") as lbpath:
+        y_train = np.frombuffer(lbpath.read(), np.uint8, offset=8)
+
+    path = os.path.join(data_dir, files[1])
+    with open(path, "rb") as imgpath:
+        x_train = np.frombuffer(imgpath.read(), np.uint8, offset=16).reshape(
+            len(y_train), 28, 28
+        )
+
+    path = os.path.join(data_dir, files[2])
+    with open(path, "rb") as lbpath:
+        y_test = np.frombuffer(lbpath.read(), np.uint8, offset=8)
+
+    path = os.path.join(data_dir, files[3])
+    with open(path, "rb") as imgpath:
+        x_test = np.frombuffer(imgpath.read(), np.uint8, offset=16).reshape(
+            len(y_test), 28, 28
+        )
+
+
+    return (x_train, y_train), (x_test, y_test)
+
 def house_sales_data():
     # 774 House sales in Sacramento area.
     # Column 1: region (1--4) based on 5-digit ZIP code (see Table 13.4.)
