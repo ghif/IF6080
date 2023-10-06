@@ -11,18 +11,17 @@ Repositori ini berisi materi implementasi kode yang digunakan sebagai bahan ajar
 2. Implementasi dasar supervised learning
     - Pengolahan data tabular
     - Training dan regularisasi
-    - Regresi dan klasifikasi linear
-    - Evaluasi performa model
+    - Regresi linear
+    - Klasifikasi: logistic regression
 
-3. Implementasi beberapa algoritma standar pembelajaran mesin
-    - DTL dan ensemble methods
-    - Naive Bayes dan logistic regression
-    - Use case #1: ?
+3. Implementasi generative classifier
+    - Gaussian Discriminant Analysis (GDA)
+    - Naive Bayes
 
 4. Implementasi Bayesian Networks?
 
-5. Deep Learning dengan PyTorch
-    - Pengantar PyTorch: tensor, transform, autograd
+5. Deep Learning dengan Tensorflow / Keras
+    - Pengantar Tensorflow: tensor, transform, autograd
     - Implementasi arsitektur model, fungsi objektif, dan gradient descent / backpropagation training
     - Implementasi model klasifikasi sederhana: logistic classifier, MLP
     - Use case #2: ?
@@ -36,4 +35,4 @@ Repositori ini berisi materi implementasi kode yang digunakan sebagai bahan ajar
 ## Kebutuhan Pendukung
 
 - NumPy
-- PyTorch
+- Tensorflow / Keras
