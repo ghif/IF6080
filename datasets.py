@@ -2,6 +2,40 @@ import os
 # import gzip
 import numpy as np
 import pandas as pd
+from sklearn.datasets import make_blobs
+from sklearn.datasets import make_moons
+
+def load_random_2d_points(n_samples_1=100, n_samples_2=100, center_1=[0.0, 0.0], center_2=[2.0, 2.0]):
+    """
+    Args:
+        n_samples_1 (int): number of samples for class 1
+        n_samples_2 (int): number of samples for class 2
+    Returns:
+        X (np.array): n x d 
+        y (np.array): d
+    """
+    centers = [center_1, center_2]
+    clusters_std = [0.5, 0.5]
+    X, y = make_blobs(
+        n_samples=[n_samples_1, n_samples_2],
+        centers=centers,
+        cluster_std=clusters_std,
+        random_state=0,
+        shuffle=False,
+    )
+    return X, y
+
+def load_2d_moons(n_samples=100, noise=0.1):
+    """
+    Args:
+        n_samples (int): number of samples for class 1
+        noise (float): noise level
+    Returns:
+        X (np.array): n x d 
+        y (np.array): d
+    """
+    X, y = make_moons(n_samples=n_samples, noise=noise, random_state=0)
+    return X, y
 
 def load_breast_cancer(datapath=None):
     """
@@ -35,7 +69,7 @@ def load_breast_cancer(datapath=None):
 
 def load_mnist_data(data_dir=None):
     if data_dir is None:
-        data_dir = "/Users/mghifary/Work/Code/AI/data/fashion_mnist"
+        data_dir = "/Users/mghifary/Work/Code/AI/IF6080/data/mnist"
 
     files = [
         "train-labels.idx1-ubyte",
