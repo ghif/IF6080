@@ -1,9 +1,139 @@
 import os
-# import gzip
+import gzip
 import numpy as np
 import pandas as pd
 from sklearn.datasets import make_blobs
 from sklearn.datasets import make_moons
+
+import math
+
+# def load_cifar10_data(dirname=None):
+#     """Loads the CIFAR10 dataset.
+
+#     This is a dataset of 50,000 32x32 color training images and 10,000 test
+#     images, labeled over 10 categories. See more info at the
+#     [CIFAR homepage](https://www.cs.toronto.edu/~kriz/cifar.html).
+
+#     The classes are:
+
+#     | Label | Description |
+#     |:-----:|-------------|
+#     |   0   | airplane    |
+#     |   1   | automobile  |
+#     |   2   | bird        |
+#     |   3   | cat         |
+#     |   4   | deer        |
+#     |   5   | dog         |
+#     |   6   | frog        |
+#     |   7   | horse       |
+#     |   8   | ship        |
+#     |   9   | truck       |
+
+#     Returns:
+#       Tuple of NumPy arrays: `(x_train, y_train), (x_test, y_test)`.
+
+#     **x_train**: uint8 NumPy array of image data with shapes
+#       `(50000, 32, 32, 3)`, containing the training data. Pixel values range
+#       from 0 to 255.
+
+#     **y_train**: uint8 NumPy array of labels (integers in range 0-9)
+#       with shape `(50000, 1)` for the training data.
+
+#     **x_test**: uint8 NumPy array of image data with shapes
+#       `(10000, 32, 32, 3)`, containing the test data. Pixel values range
+#       from 0 to 255.
+
+#     **y_test**: uint8 NumPy array of labels (integers in range 0-9)
+#       with shape `(10000, 1)` for the test data.
+
+#     Example:
+
+#     ```python
+#     (x_train, y_train), (x_test, y_test) = keras.datasets.cifar10.load_data()
+#     assert x_train.shape == (50000, 32, 32, 3)
+#     assert x_test.shape == (10000, 32, 32, 3)
+#     assert y_train.shape == (50000, 1)
+#     assert y_test.shape == (10000, 1)
+#     ```
+#     """
+#     if dirname is None:
+#         origin = "https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz"
+#         path = get_file(
+#             dirname,
+#             origin=origin,
+#             untar=True,
+#             file_hash=(  # noqa: E501
+#                 "6d958be074577803d12ecdefd02955f39262c83c16fe9348329d7fe0b5c001ce"
+#             ),
+#         )
+
+#     num_train_samples = 50000
+
+#     x_train = np.empty((num_train_samples, 3, 32, 32), dtype="uint8")
+#     y_train = np.empty((num_train_samples,), dtype="uint8")
+
+#     for i in range(1, 6):
+#         fpath = os.path.join(path, "data_batch_" + str(i))
+#         (
+#             x_train[(i - 1) * 10000 : i * 10000, :, :, :],
+#             y_train[(i - 1) * 10000 : i * 10000],
+#         ) = load_batch(fpath)
+
+#     fpath = os.path.join(path, "test_batch")
+#     x_test, y_test = load_batch(fpath)
+
+#     y_train = np.reshape(y_train, (len(y_train), 1))
+#     y_test = np.reshape(y_test, (len(y_test), 1))
+
+#     if backend.image_data_format() == "channels_last":
+#         x_train = x_train.transpose(0, 2, 3, 1)
+#         x_test = x_test.transpose(0, 2, 3, 1)
+
+#     x_test = x_test.astype(x_train.dtype)
+#     y_test = y_test.astype(y_train.dtype)
+
+#     return (x_train, y_train), (x_test, y_test)
+
+
+def load_spiral_data(N=1000, D=2, C=3):
+    """
+    Args:
+        N (int): number of samples per class
+        D (int): dimensionality
+        C (int): number of classes
+    Returns:
+        X (np.array): N x D
+        y (np.array): N
+    """
+
+    N = 1000  # num_samples_per_class
+    D = 2  # dimensions
+    C = 3  # num_classes
+
+    X = np.zeros((N * C, D))
+    y = np.zeros((N * C), dtype=np.long)
+    for c in range(C):
+        index = 0
+        t = np.linspace(0, 1, N)
+        # When c = 0 and t = 0: start of linspace
+        # When c = 0 and t = 1: end of linpace
+        # This inner_var is for the formula inside sin() and cos() like sin(inner_var) and cos(inner_Var)
+        inner_var = np.linspace(
+            # When t = 0
+            (2 * math.pi / C) * (c),
+            # When t = 1
+            (2 * math.pi / C) * (2 + c),
+            N
+        ) + np.random.randn(N) * 0.2
+        
+        for ix in range(N * c, N * (c + 1)):
+            X[ix] = t[index] * np.array((
+                math.sin(inner_var[index]), math.cos(inner_var[index])
+            ))
+            y[ix] = c
+            index += 1
+
+    return X, y
 
 def load_random_2d_points(n_samples_1=100, n_samples_2=100, center_1=[0.0, 0.0], center_2=[2.0, 2.0]):
     """
@@ -95,6 +225,41 @@ def load_mnist_data(data_dir=None):
 
     path = os.path.join(data_dir, files[3])
     with open(path, "rb") as imgpath:
+        x_test = np.frombuffer(imgpath.read(), np.uint8, offset=16).reshape(
+            len(y_test), 28, 28
+        )
+
+
+    return (x_train, y_train), (x_test, y_test)
+
+def load_fashion_mnist_data(data_dir=None):
+    if data_dir is None:
+        data_dir = "/Users/mghifary/Work/Code/AI/IF6080/data/fashion_mnist"
+    
+    files = [
+        "train-labels-idx1-ubyte.gz",
+        "train-images-idx3-ubyte.gz",
+        "t10k-labels-idx1-ubyte.gz",
+        "t10k-images-idx3-ubyte.gz",
+    ]
+
+    # training label
+    path = os.path.join(data_dir, files[0])
+    with gzip.open(path, "rb") as lbpath:
+        y_train = np.frombuffer(lbpath.read(), np.uint8, offset=8)
+
+    path = os.path.join(data_dir, files[1])
+    with gzip.open(path, "rb") as imgpath:
+        x_train = np.frombuffer(imgpath.read(), np.uint8, offset=16).reshape(
+            len(y_train), 28, 28
+        )
+
+    path = os.path.join(data_dir, files[2])
+    with gzip.open(path, "rb") as lbpath:
+        y_test = np.frombuffer(lbpath.read(), np.uint8, offset=8)
+
+    path = os.path.join(data_dir, files[3])
+    with gzip.open(path, "rb") as imgpath:
         x_test = np.frombuffer(imgpath.read(), np.uint8, offset=16).reshape(
             len(y_test), 28, 28
         )
