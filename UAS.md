@@ -14,8 +14,8 @@ Pada tugas ini Anda menguji efektifitas transfer learning pada dataset Modern-Of
 
 ## Tantangan
 Implementasikan solusi transfer learning dengan memanfaatkan backbone model deep learning yang telah di pralatih dengan setting sebagai berikut: 
-- Amazon (A) --> DSLR (D): menggunakan Amazon sebagai data latih transfer learning (baik dengan cara feature extraction maupun finetuning) dan DSLR sebagai data uji. 
-- DSLR (D) --> Amazon (A): kebalikan dari setting di atas
+- Amazon (A) -> DSLR (D): menggunakan Amazon sebagai data latih transfer learning (baik dengan cara feature extraction maupun finetuning) dan DSLR sebagai data uji. 
+- DSLR (D) -> Amazon (A): kebalikan dari setting di atas
 
 Anda dibebaskan memilih model backbone yang tersedia di Internet. Pada Keras terdapat berbagai pilihan yang dapat dilihat di
 - https://keras.io/api/applications/
@@ -30,7 +30,7 @@ Contoh kode pembacaan dataset Modern-Office-31: https://github.com/ghif/keras-po
 2.	Implementasi arsitektur dan pelatihan model beserta penjelasannya -- 25 poin
 3.	Visualisasi progress pelatihan (sumbu x: epoch, sumbu y: loss dan accuracy) – 5 poin
 4.	Pencapaian performa model:
-    a.	Akurasi uji A --> D mencapai >= 75% (2.5 poin)
-    b.	Akurasi uji D --> A mencapai >= 65% (2.5 poin)
+    a.	Akurasi uji A -> D mencapai >= 75% (2.5 poin)
+    b.	Akurasi uji D -> A mencapai >= 65% (2.5 poin)
 
 Prasyarat: nilai-nilai di atas hanya akan dihitung apabila akurasi uji yang didapatkan dari seluruh percobaan minimal 10%.
