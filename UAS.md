@@ -32,7 +32,7 @@ Contoh kode pembacaan dataset Modern-Office-31: https://github.com/ghif/keras-po
 2.	Implementasi arsitektur dan pelatihan model beserta penjelasannya (**25 poin**)
 3.	Visualisasi progress pelatihan (sumbu x: epoch, sumbu y: loss dan accuracy) (**5 poin**)
 4.	Pencapaian performa model:
-    a.	Akurasi uji A -> D mencapai >= 75% (**2.5 poin**)
-    b.	Akurasi uji D -> A mencapai >= 65% (**2.5 poin**)
+    - Akurasi uji A -> D mencapai >= 75% (**2.5 poin**)
+    - Akurasi uji D -> A mencapai >= 65% (**2.5 poin**)
 
 Prasyarat: nilai-nilai di atas hanya akan dihitung apabila akurasi uji yang didapatkan dari seluruh percobaan minimal 10%.
