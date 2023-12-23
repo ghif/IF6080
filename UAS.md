@@ -1,5 +1,6 @@
 # Tugas UAS Praktek Semester I 2023 / 2024 - IF6080 Pembelajaran Mesin Probabilistik
 Total nilai: 40 - open book/reference
+Waktu pengerjaan: 5 jam
 
 ## Latar Belakang
 Pada tahun 2012, deep learning menghasilkan terobosan pada bidang Computer Vision dimana model deep learning bernama AlexNet menjadi pemenang pada perlombaan ImageNet object recognition. Setelah itu berbagai model deep learning serupa dengan arsitektur yang lebih kompleks banyak bermunculan dan tersedia di Internet, sebagai contoh, GoogleNet, VGGNet, ResNet, XCeption, ViT, dan sebagainya.
